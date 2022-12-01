@@ -1,0 +1,1451 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Distribution Sales Visibility Bookings System API",
+    "description": "System API for Distribution Sales Visibility Bookings Status and Details.",
+    "version": "V1.0"
+  },
+  "host": "anypoint.mulesoft.com",
+  "basePath": "/mocking/api/v1/links/7f71c933-cd95-480e-a4e7-87e0c0808f67/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "BookingsStatusRequest": {
+      "type": "object",
+      "properties": {
+        "pageSet": {
+          "type": "object",
+          "properties": {
+            "startIndex": {
+              "type": "number"
+            },
+            "recordSize": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "startIndex",
+            "recordSize"
+          ]
+        },
+        "bookingsRequest": {
+          "type": "object",
+          "properties": {
+            "sourceProfileId": {
+              "type": "number"
+            },
+            "sourceXmlBookingId": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "ciscoCreated": {
+              "default": "N",
+              "type": "string"
+            },
+            "bookingsSearchCriteria": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "distiSONumber": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "distiSOLineNumber": {
+                    "type": "string"
+                  },
+                  "resellerToDistiPONumber": {
+                    "type": "string"
+                  },
+                  "dealID": {
+                    "type": "string"
+                  },
+                  "serviceQuote": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "distiSONumber"
+                ]
+              }
+            }
+          },
+          "required": [
+            "bookingsSearchCriteria"
+          ]
+        }
+      },
+      "required": [
+        "pageSet",
+        "bookingsRequest"
+      ]
+    },
+    "BookingsStatusResponse": {
+      "type": "object",
+      "properties": {
+        "pageSet": {
+          "type": "object",
+          "properties": {
+            "totalRecordCount": {
+              "type": "number"
+            },
+            "recordsFetched": {
+              "type": "number"
+            },
+            "startIndex": {
+              "type": "number"
+            },
+            "recordSetCompleteIndicator": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "totalRecordCount",
+            "recordsFetched",
+            "startIndex",
+            "recordSetCompleteIndicator"
+          ]
+        },
+        "bookingsStatusResponse": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ciscoDSVLineID": {
+                "type": "number"
+              },
+              "distiSoNumber": {
+                "type": "string"
+              },
+              "distiSoLineNumber": {
+                "type": "string"
+              },
+              "bookingsLineStatus": {
+                "type": "string"
+              },
+              "sourceProfileId": {
+                "type": "number"
+              },
+              "sourceXmlBookingId": {
+                "type": "string"
+              },
+              "netUnitPrice": {
+                "format": "float",
+                "type": "number"
+              },
+              "dealId": {
+                "type": "string"
+              },
+              "magicKey": {
+                "type": "string"
+              },
+              "promoNumber": {
+                "type": "string"
+              },
+              "serviceQuoteNumber": {
+                "type": "string"
+              },
+              "ciscoStandardPartNumber": {
+                "type": "string"
+              },
+              "productQuantity": {
+                "type": "number"
+              },
+              "reportedNetUnitPrice": {
+                "format": "float",
+                "type": "number"
+              },
+              "remainingQuantity": {
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "nil"
+                  }
+                ]
+              },
+              "claimPerUnit": {
+                "default": 0,
+                "format": "float",
+                "type": "number"
+              },
+              "wplPriceLc": {
+                "format": "float",
+                "type": "number"
+              },
+              "resellerToDistiPONumber": {
+                "type": "string"
+              },
+              "customerReqShipDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "buyerResellerName": {
+                "type": "string"
+              },
+              "buyerResellerPartnerIdentification": {
+                "type": "string"
+              },
+              "endCustomerName": {
+                "type": "string"
+              },
+              "ciscoCreatedFlag": {
+                "type": "string"
+              },
+              "expirationDate": {
+                "type": "string"
+              },
+              "extendedExpirationDate": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "lineErrors": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            },
+            "required": [
+              "ciscoDSVLineID",
+              "distiSoNumber",
+              "distiSoLineNumber",
+              "bookingsLineStatus",
+              "sourceProfileId",
+              "sourceXmlBookingId",
+              "ciscoStandardPartNumber",
+              "productQuantity",
+              "reportedNetUnitPrice",
+              "remainingQuantity",
+              "wplPriceLc",
+              "ciscoCreatedFlag",
+              "expirationDate",
+              "extendedExpirationDate",
+              "status"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pageSet",
+        "bookingsStatusResponse"
+      ]
+    },
+    "BookingsDetailsRequest": {
+      "type": "object",
+      "properties": {
+        "pageSet": {
+          "type": "object",
+          "properties": {
+            "startIndex": {
+              "type": "number"
+            },
+            "recordSize": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "startIndex",
+            "recordSize"
+          ]
+        },
+        "bookingsDetailsRequest": {
+          "type": "object",
+          "properties": {
+            "sourceProfileId": {
+              "type": "number"
+            },
+            "sourceXmlBookingId": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "distiSONumber": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "distiSOLineNumber": {
+              "type": "string"
+            },
+            "ciscoStandardPartNumber": {
+              "type": "string"
+            },
+            "dealID": {
+              "type": "string"
+            },
+            "ciscoCreated": {
+              "default": "N",
+              "type": "string"
+            }
+          },
+          "required": [
+            "distiSONumber"
+          ]
+        }
+      },
+      "required": [
+        "pageSet",
+        "bookingsDetailsRequest"
+      ]
+    },
+    "BookingsDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "pageSet": {
+          "type": "object",
+          "properties": {
+            "totalRecordCount": {
+              "type": "number"
+            },
+            "recordsFetched": {
+              "type": "number"
+            },
+            "startIndex": {
+              "type": "number"
+            },
+            "recordSetCompleteIndicator": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "totalRecordCount",
+            "recordsFetched",
+            "startIndex",
+            "recordSetCompleteIndicator"
+          ]
+        },
+        "bookingsDetails": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "ciscoDSVLineID": {
+                "type": "number"
+              },
+              "distiSoNumber": {
+                "type": "string"
+              },
+              "distiSoLineNumber": {
+                "type": "string"
+              },
+              "sourceProfileId": {
+                "type": "number"
+              },
+              "sourceXmlBookingId": {
+                "type": "string"
+              },
+              "ciscoStandardPartNumber": {
+                "type": "string"
+              },
+              "bookingDate": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  {
+                    "type": "nil"
+                  }
+                ]
+              },
+              "distiResellerSoDate": {
+                "type": "string"
+              },
+              "startDate": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  {
+                    "type": "nil"
+                  }
+                ]
+              },
+              "endDate": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  {
+                    "type": "nil"
+                  }
+                ]
+              },
+              "duration": {
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "nil"
+                  }
+                ]
+              },
+              "reportedProductUnitPrice": {
+                "format": "float",
+                "type": "number"
+              },
+              "distiPoNumber": {
+                "type": "string"
+              },
+              "dropShip": {
+                "type": "string"
+              },
+              "buyerResellerAddress1": {
+                "type": "string"
+              },
+              "buyerResellerAddress2": {
+                "type": "string"
+              },
+              "buyerResellerCity": {
+                "type": "string"
+              },
+              "buyerResellerState": {
+                "type": "string"
+              },
+              "buyerResellerZip": {
+                "type": "string"
+              },
+              "buyerResellerCountry": {
+                "type": "string"
+              },
+              "endCustomerAddress1": {
+                "type": "string"
+              },
+              "endCustomerAddress2": {
+                "type": "string"
+              },
+              "endCustomerCity": {
+                "type": "string"
+              },
+              "endCustomerState": {
+                "type": "string"
+              },
+              "endCustomerZip": {
+                "type": "string"
+              },
+              "endCustomerCountry": {
+                "type": "string"
+              },
+              "ciscoCreatedFlag": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "ciscoDSVLineID",
+              "distiSoNumber",
+              "distiSoLineNumber",
+              "sourceProfileId",
+              "sourceXmlBookingId",
+              "ciscoStandardPartNumber",
+              "bookingDate",
+              "distiResellerSoDate",
+              "reportedProductUnitPrice",
+              "ciscoCreatedFlag"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "pageSet",
+        "bookingsDetails"
+      ]
+    },
+    "CustomErrorMessage": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "transactionID": {
+          "type": "string"
+        },
+        "timeStamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "errorCode",
+        "errorMessage",
+        "transactionID",
+        "timeStamp"
+      ]
+    },
+    "PingResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "apiName": {
+          "type": "string"
+        },
+        "apiVersion": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "apiName",
+        "apiVersion",
+        "timestamp"
+      ]
+    }
+  },
+  "paths": {
+    "/status": {
+      "post": {
+        "description": "Provides the Bookings Status Based on the input",
+        "operationId": "POST_status",
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "examples": {
+              "application/json": {
+                "resp1": {
+                  "pageSet": {
+                    "totalRecordCount": 2,
+                    "recordsFetched": 2,
+                    "startIndex": 1,
+                    "recordSetCompleteIndicator": true
+                  },
+                  "bookingsStatusResponse": [
+                    {
+                      "ciscoDSVLineID": 1,
+                      "distiSoNumber": "5003344211027",
+                      "distiSoLineNumber": "22",
+                      "bookingsLineStatus": "CLOSED",
+                      "sourceProfileId": 121,
+                      "sourceXmlBookingId": "",
+                      "netUnitPrice": 33.15,
+                      "dealId": "52971325",
+                      "magicKey": "Q9041327898-000",
+                      "promoNumber": "",
+                      "serviceQuoteNumber": "",
+                      "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                      "productQuantity": 2,
+                      "reportedNetUnitPrice": 33.15,
+                      "remainingQuantity": null,
+                      "claimPerUnit": 9.94,
+                      "wplPriceLc": 43.09,
+                      "resellerToDistiPONumber": "PO10047567",
+                      "customerReqShipDate": "2021-11-29",
+                      "buyerResellerName": "RAHI SYSTEMS INC",
+                      "buyerResellerPartnerIdentification": "308925299",
+                      "endCustomerName": "SAMSUNG AUSTIN SEMICONDUCTOR",
+                      "expirationDate": "2022-02-07T00:00:00",
+                      "extendedExpirationDate": "2022-04-18T00:00:00",
+                      "status": "NEW",
+                      "ciscoCreatedFlag": "N",
+                      "lineErrors": []
+                    },
+                    {
+                      "ciscoDSVLineID": 2,
+                      "distiSoNumber": "9000136489",
+                      "distiSoLineNumber": "20",
+                      "bookingsLineStatus": "POSTED",
+                      "sourceProfileId": 121,
+                      "sourceXmlBookingId": "",
+                      "netUnitPrice": 236.37,
+                      "dealId": "19780401",
+                      "magicKey": "R5617121322-568",
+                      "promoNumber": "",
+                      "serviceQuoteNumber": "221902071",
+                      "ciscoStandardPartNumber": "CON-SNT-C93004UA",
+                      "productQuantity": 1,
+                      "reportedNetUnitPrice": 236.37,
+                      "remainingQuantity": null,
+                      "claimPerUnit": 0,
+                      "wplPriceLc": 424.82,
+                      "resellerToDistiPONumber": "6543",
+                      "customerReqShipDate": "2022-03-25",
+                      "buyerResellerName": "AEC GROUP LLC",
+                      "buyerResellerPartnerIdentification": "221508437",
+                      "endCustomerName": "UPMC",
+                      "expirationDate": "2022-02-07T00:00:00",
+                      "extendedExpirationDate": "2022-04-18T00:00:00",
+                      "status": "CHANGE",
+                      "ciscoCreatedFlag": "N",
+                      "lineErrors": []
+                    }
+                  ]
+                },
+                "resp2": {
+                  "pageSet": {
+                    "totalRecordCount": 5,
+                    "recordsFetched": 4,
+                    "startIndex": 1,
+                    "recordSetCompleteIndicator": false
+                  },
+                  "bookingsStatusResponse": [
+                    {
+                      "ciscoDSVLineID": 1,
+                      "distiSoNumber": "5003344211027",
+                      "distiSoLineNumber": "10",
+                      "bookingsLineStatus": "CLOSED",
+                      "sourceProfileId": 121,
+                      "sourceXmlBookingId": "",
+                      "netUnitPrice": 218.59,
+                      "dealId": "52971325",
+                      "magicKey": "Q9041327868-000",
+                      "promoNumber": "",
+                      "serviceQuoteNumber": "",
+                      "ciscoStandardPartNumber": "UCS-M2-240GB",
+                      "productQuantity": 4,
+                      "reportedNetUnitPrice": 218.59,
+                      "remainingQuantity": 4,
+                      "claimPerUnit": 65.57,
+                      "wplPriceLc": 284.16,
+                      "resellerToDistiPONumber": "PO10047567",
+                      "customerReqShipDate": "2022-01-25",
+                      "buyerResellerName": "RAHI SYSTEMS INC",
+                      "buyerResellerPartnerIdentification": "308925299",
+                      "endCustomerName": "SAMSUNG AUSTIN SEMICONDUCTOR",
+                      "expirationDate": "2022-02-07T00:00:00",
+                      "extendedExpirationDate": "2022-04-18T00:00:00",
+                      "status": "NEW",
+                      "ciscoCreatedFlag": "N",
+                      "lineErrors": []
+                    },
+                    {
+                      "ciscoDSVLineID": 2,
+                      "distiSoNumber": "5003344211027",
+                      "distiSoLineNumber": "11",
+                      "bookingsLineStatus": "CLOSED",
+                      "sourceProfileId": 121,
+                      "sourceXmlBookingId": "",
+                      "netUnitPrice": 82.13,
+                      "dealId": "52971325",
+                      "magicKey": "Q9028191265-000",
+                      "promoNumber": "",
+                      "serviceQuoteNumber": "",
+                      "ciscoStandardPartNumber": "UCS-M2-HWRAID",
+                      "productQuantity": 2,
+                      "reportedNetUnitPrice": 82.13,
+                      "remainingQuantity": null,
+                      "claimPerUnit": 34.67,
+                      "wplPriceLc": 116.8,
+                      "resellerToDistiPONumber": "PO10047567",
+                      "customerReqShipDate": "2021-11-30",
+                      "buyerResellerName": "RAHI SYSTEMS INC",
+                      "buyerResellerPartnerIdentification": "308925299",
+                      "endCustomerName": "SAMSUNG AUSTIN SEMICONDUCTOR",
+                      "expirationDate": "2022-02-07T00:00:00",
+                      "extendedExpirationDate": "2022-04-18T00:00:00",
+                      "status": "NEW",
+                      "ciscoCreatedFlag": "N",
+                      "lineErrors": []
+                    },
+                    {
+                      "ciscoDSVLineID": 3,
+                      "distiSoNumber": "5003344211027",
+                      "distiSoLineNumber": "1136028592",
+                      "bookingsLineStatus": "CLOSED",
+                      "sourceProfileId": 121,
+                      "sourceXmlBookingId": "",
+                      "netUnitPrice": 0,
+                      "dealId": "52971325",
+                      "magicKey": "Q9041327871-000",
+                      "promoNumber": "",
+                      "serviceQuoteNumber": "",
+                      "ciscoStandardPartNumber": "DC-MGT-OPTOUT",
+                      "productQuantity": 1,
+                      "reportedNetUnitPrice": 0,
+                      "remainingQuantity": null,
+                      "claimPerUnit": 0,
+                      "wplPriceLc": 0,
+                      "resellerToDistiPONumber": "",
+                      "customerReqShipDate": "2021-10-30",
+                      "buyerResellerName": "RAHI SYSTEMS INC",
+                      "buyerResellerPartnerIdentification": "308925299",
+                      "endCustomerName": "SAMSUNG AUSTIN SEMICONDUCTOR",
+                      "expirationDate": "2022-02-07T00:00:00",
+                      "extendedExpirationDate": "2022-04-18T00:00:00",
+                      "status": "CHANGE",
+                      "ciscoCreatedFlag": "N",
+                      "lineErrors": []
+                    },
+                    {
+                      "ciscoDSVLineID": 4,
+                      "distiSoNumber": "5003344211027",
+                      "distiSoLineNumber": "1136028595",
+                      "bookingsLineStatus": "CLOSED",
+                      "sourceProfileId": 121,
+                      "sourceXmlBookingId": "",
+                      "netUnitPrice": 0,
+                      "dealId": "52971325",
+                      "magicKey": "Q9041327896-000",
+                      "promoNumber": "",
+                      "serviceQuoteNumber": "",
+                      "ciscoStandardPartNumber": "DC-MGT-OPTOUT",
+                      "productQuantity": 1,
+                      "reportedNetUnitPrice": 0,
+                      "remainingQuantity": null,
+                      "claimPerUnit": 0,
+                      "wplPriceLc": 0,
+                      "resellerToDistiPONumber": "",
+                      "customerReqShipDate": "2021-10-30",
+                      "buyerResellerName": "RAHI SYSTEMS INC",
+                      "buyerResellerPartnerIdentification": "308925299",
+                      "endCustomerName": "SAMSUNG AUSTIN SEMICONDUCTOR",
+                      "expirationDate": "2022-02-07T00:00:00",
+                      "extendedExpirationDate": "2022-04-18T00:00:00",
+                      "status": "CHANGE",
+                      "ciscoCreatedFlag": "N",
+                      "lineErrors": []
+                    }
+                  ]
+                },
+                "resp3": {
+                  "pageSet": {
+                    "totalRecordCount": 2,
+                    "recordsFetched": 2,
+                    "startIndex": 1,
+                    "recordSetCompleteIndicator": true
+                  },
+                  "bookingsStatusResponse": [
+                    {
+                      "ciscoDSVLineID": 1,
+                      "distiSoNumber": "4317157AA",
+                      "distiSoLineNumber": "22",
+                      "bookingsLineStatus": "Expired",
+                      "sourceProfileId": 121,
+                      "sourceXmlBookingId": "",
+                      "netUnitPrice": 33.15,
+                      "dealId": "",
+                      "magicKey": "Q9041327898-000",
+                      "promoNumber": "",
+                      "serviceQuoteNumber": "",
+                      "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                      "productQuantity": 2,
+                      "reportedNetUnitPrice": 33.15,
+                      "remainingQuantity": null,
+                      "claimPerUnit": 9.94,
+                      "wplPriceLc": 43.09,
+                      "resellerToDistiPONumber": "PO10047567",
+                      "customerReqShipDate": "2021-11-29",
+                      "buyerResellerName": "RAHI SYSTEMS INC",
+                      "buyerResellerPartnerIdentification": "308925299",
+                      "endCustomerName": "SAMSUNG AUSTIN SEMICONDUCTOR",
+                      "expirationDate": "2022-02-07T00:00:00",
+                      "extendedExpirationDate": "2022-04-18T00:00:00",
+                      "status": "",
+                      "ciscoCreatedFlag": "N",
+                      "lineErrors": [
+                        {
+                          "errorId": "31420",
+                          "errorMessage": "DSV Booking is having Magic Key but Deal ID or Quote Number is not provided"
+                        }
+                      ]
+                    },
+                    {
+                      "ciscoDSVLineID": 2,
+                      "distiSoNumber": "9000136489",
+                      "distiSoLineNumber": "20",
+                      "bookingsLineStatus": "Expired",
+                      "sourceProfileId": 121,
+                      "sourceXmlBookingId": "",
+                      "netUnitPrice": 236.37,
+                      "dealId": "",
+                      "magicKey": "R5617121322-568",
+                      "promoNumber": "",
+                      "serviceQuoteNumber": "",
+                      "ciscoStandardPartNumber": "CON-SNT-C93004UA",
+                      "productQuantity": 1,
+                      "reportedNetUnitPrice": 236.37,
+                      "remainingQuantity": null,
+                      "claimPerUnit": 0,
+                      "wplPriceLc": 424.82,
+                      "resellerToDistiPONumber": "6543",
+                      "customerReqShipDate": "2022-03-25",
+                      "buyerResellerName": "AEC GROUP LLC",
+                      "buyerResellerPartnerIdentification": "221508437",
+                      "endCustomerName": "UPMC",
+                      "expirationDate": "2022-02-07T00:00:00",
+                      "extendedExpirationDate": "2022-04-18T00:00:00",
+                      "status": "",
+                      "ciscoCreatedFlag": "N",
+                      "lineErrors": [
+                        {
+                          "errorId": "31420",
+                          "errorMessage": "DSV Booking is having Magic Key but Deal ID or Quote Number is not provided"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/BookingsStatusResponse"
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error",
+            "examples": {
+              "application/json": {
+                "err1": {
+                  "errorCode": "400",
+                  "errorMessage": "Invalid request message",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "404": {
+            "description": "The server can not find the requested resource.",
+            "examples": {
+              "application/json": {
+                "err2": {
+                  "errorCode": "404",
+                  "errorMessage": "Requested resource was not found",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "405": {
+            "description": "Not Acceptable.",
+            "examples": {
+              "application/json": {
+                "err3": {
+                  "errorCode": "405",
+                  "errorMessage": "Requested method not allowed:",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "406": {
+            "description": "Not Acceptable.",
+            "examples": {
+              "application/json": {
+                "err4": {
+                  "errorCode": "406",
+                  "errorMessage": "Not acceptable:",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "415": {
+            "description": "Unsupported MediaType.",
+            "examples": {
+              "application/json": {
+                "err5": {
+                  "errorCode": "415",
+                  "errorMessage": "Unsupported media type:",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "501": {
+            "description": "The request method is not supported by the server and cannot be handled.",
+            "examples": {
+              "application/json": [
+                {
+                  "errorCode": "501",
+                  "errorMessage": "Not Implemented",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              ]
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "examples": {
+              "application/json": {
+                "err7": {
+                  "errorCode": "503",
+                  "errorMessage": "Service Unavailable",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout",
+            "examples": {
+              "application/json": {
+                "err8": {
+                  "errorCode": "504",
+                  "errorMessage": "Gateway Timeout",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "example": {
+                "req1": {
+                  "pageSet": {
+                    "startIndex": 1,
+                    "recordSize": 100
+                  },
+                  "bookingsRequest": {
+                    "sourceXmlBookingId": "BKG-ING-US-3",
+                    "ciscoCreated": "N",
+                    "bookingsSearchCriteria": [
+                      {
+                        "distiSONumber": "5003344211027",
+                        "distiSOLineNumber": "22",
+                        "resellerToDistiPONumber": "PO10047567",
+                        "dealID": "52971325",
+                        "serviceQuote": ""
+                      },
+                      {
+                        "distiSONumber": "9000136489",
+                        "distiSOLineNumber": "20",
+                        "resellerToDistiPONumber": "PO10047567",
+                        "dealID": "19780401",
+                        "serviceQuote": ""
+                      }
+                    ]
+                  }
+                },
+                "req2": {
+                  "pageSet": {
+                    "startIndex": 1,
+                    "recordSize": 20
+                  },
+                  "bookingsRequest": {
+                    "sourceProfileId": 3,
+                    "ciscoCreated": "N",
+                    "bookingsSearchCriteria": [
+                      {
+                        "distiSONumber": "5003344211027",
+                        "dealID": "52971325"
+                      },
+                      {
+                        "distiSONumber": "9000136489",
+                        "dealID": "19780401"
+                      }
+                    ]
+                  }
+                },
+                "req3": {
+                  "pageSet": {
+                    "startIndex": 1,
+                    "recordSize": 100
+                  },
+                  "bookingsRequest": {
+                    "sourceXmlBookingId": "BKG-ING-US-3",
+                    "ciscoCreated": "N",
+                    "bookingsSearchCriteria": [
+                      {
+                        "distiSONumber": "5003344211027",
+                        "distiSOLineNumber": "22",
+                        "resellerToDistiPONumber": "PO10047567",
+                        "dealID": "52971325",
+                        "serviceQuote": ""
+                      },
+                      {
+                        "distiSONumber": "9000136489",
+                        "distiSOLineNumber": "20",
+                        "resellerToDistiPONumber": "PO10047567",
+                        "dealID": "19780401",
+                        "serviceQuote": ""
+                      }
+                    ]
+                  }
+                }
+              },
+              "$ref": "#/definitions/BookingsStatusRequest"
+            },
+            "in": "body",
+            "name": "body",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/details": {
+      "post": {
+        "description": "Provides the Bookings Details Based on the input",
+        "operationId": "POST_details",
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "examples": {
+              "application/json": {
+                "res1": {
+                  "pageSet": {
+                    "totalRecordCount": 4,
+                    "recordsFetched": 4,
+                    "startIndex": 1,
+                    "recordSetCompleteIndicator": true
+                  },
+                  "bookingsDetails": [
+                    {
+                      "ciscoDSVLineID": 1,
+                      "distiSoNumber": "5003344211027",
+                      "distiSoLineNumber": "22",
+                      "sourceXmlBookingId": "BKG-ING-US-3",
+                      "sourceProfileId": 3,
+                      "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                      "bookingDate": "2021-10-28",
+                      "distiResellerSoDate": "2021-10-27",
+                      "startDate": null,
+                      "endDate": null,
+                      "duration": null,
+                      "reportedProductUnitPrice": 43.09,
+                      "distiPoNumber": "",
+                      "dropShip": "Y",
+                      "ciscoCreatedFlag": "N",
+                      "buyerResellerAddress1": "48303 FREMONT BLVD",
+                      "buyerResellerAddress2": "",
+                      "buyerResellerCity": "FREMONT",
+                      "buyerResellerState": "CALIFORNIA",
+                      "buyerResellerZip": "94538",
+                      "buyerResellerCountry": "US",
+                      "endCustomerAddress1": "12100 SAMSUNG BLVD",
+                      "endCustomerAddress2": "",
+                      "endCustomerCity": "AUSTIN",
+                      "endCustomerState": "TEXAS",
+                      "endCustomerZip": "78754",
+                      "endCustomerCountry": "US"
+                    },
+                    {
+                      "ciscoDSVLineID": 2,
+                      "distiSoNumber": "5003344211028",
+                      "distiSoLineNumber": "22",
+                      "sourceXmlBookingId": "BKG-ING-US-3",
+                      "sourceProfileId": 3,
+                      "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                      "bookingDate": "2021-10-28",
+                      "distiResellerSoDate": "2021-10-27",
+                      "startDate": null,
+                      "endDate": null,
+                      "duration": null,
+                      "reportedProductUnitPrice": 44.09,
+                      "distiPoNumber": "",
+                      "dropShip": "Y",
+                      "ciscoCreatedFlag": "N",
+                      "buyerResellerAddress1": "48303 FREMONT BLVD",
+                      "buyerResellerAddress2": "",
+                      "buyerResellerCity": "FREMONT",
+                      "buyerResellerState": "CALIFORNIA",
+                      "buyerResellerZip": "94538",
+                      "buyerResellerCountry": "US",
+                      "endCustomerAddress1": "12100 SAMSUNG BLVD",
+                      "endCustomerAddress2": "",
+                      "endCustomerCity": "AUSTIN",
+                      "endCustomerState": "TEXAS",
+                      "endCustomerZip": "78754",
+                      "endCustomerCountry": "US"
+                    },
+                    {
+                      "ciscoDSVLineID": 3,
+                      "distiSoNumber": "5003344211029",
+                      "distiSoLineNumber": "22",
+                      "sourceXmlBookingId": "BKG-ING-US-3",
+                      "sourceProfileId": 3,
+                      "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                      "bookingDate": "2021-10-28",
+                      "distiResellerSoDate": "2021-10-27",
+                      "startDate": null,
+                      "endDate": null,
+                      "duration": null,
+                      "reportedProductUnitPrice": 43.09,
+                      "distiPoNumber": "",
+                      "dropShip": "Y",
+                      "ciscoCreatedFlag": "N",
+                      "buyerResellerAddress1": "48303 FREMONT BLVD",
+                      "buyerResellerAddress2": "",
+                      "buyerResellerCity": "FREMONT",
+                      "buyerResellerState": "CALIFORNIA",
+                      "buyerResellerZip": "94538",
+                      "buyerResellerCountry": "US",
+                      "endCustomerAddress1": "12100 SAMSUNG BLVD",
+                      "endCustomerAddress2": "",
+                      "endCustomerCity": "AUSTIN",
+                      "endCustomerState": "TEXAS",
+                      "endCustomerZip": "78754",
+                      "endCustomerCountry": "US"
+                    },
+                    {
+                      "ciscoDSVLineID": 4,
+                      "distiSoNumber": "5003344211031",
+                      "distiSoLineNumber": "22",
+                      "sourceXmlBookingId": "BKG-ING-US-3",
+                      "sourceProfileId": 3,
+                      "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                      "bookingDate": "2021-10-28",
+                      "distiResellerSoDate": "2021-10-27",
+                      "startDate": null,
+                      "endDate": null,
+                      "duration": null,
+                      "reportedProductUnitPrice": 44.09,
+                      "distiPoNumber": "",
+                      "dropShip": "Y",
+                      "ciscoCreatedFlag": "N",
+                      "buyerResellerAddress1": "48303 FREMONT BLVD",
+                      "buyerResellerAddress2": "",
+                      "buyerResellerCity": "FREMONT",
+                      "buyerResellerState": "CALIFORNIA",
+                      "buyerResellerZip": "94538",
+                      "buyerResellerCountry": "US",
+                      "endCustomerAddress1": "12100 SAMSUNG BLVD",
+                      "endCustomerAddress2": "",
+                      "endCustomerCity": "AUSTIN",
+                      "endCustomerState": "TEXAS",
+                      "endCustomerZip": "78754",
+                      "endCustomerCountry": "US"
+                    }
+                  ]
+                },
+                "res2": {
+                  "pageSet": {
+                    "totalRecordCount": 3,
+                    "recordsFetched": 2,
+                    "startIndex": 1,
+                    "recordSetCompleteIndicator": false
+                  },
+                  "bookingsDetails": [
+                    {
+                      "ciscoDSVLineID": 1,
+                      "distiSoNumber": "5003344211027",
+                      "distiSoLineNumber": "22",
+                      "sourceXmlBookingId": "BKG-ING-US-3",
+                      "sourceProfileId": 352,
+                      "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                      "bookingDate": "2021-10-28",
+                      "distiResellerSoDate": "2021-10-27",
+                      "startDate": null,
+                      "endDate": null,
+                      "duration": null,
+                      "reportedProductUnitPrice": 43.09,
+                      "distiPoNumber": "",
+                      "dropShip": "Y",
+                      "ciscoCreatedFlag": "N",
+                      "buyerResellerAddress1": "48303 FREMONT BLVD",
+                      "buyerResellerAddress2": "",
+                      "buyerResellerCity": "FREMONT",
+                      "buyerResellerState": "CALIFORNIA",
+                      "buyerResellerZip": "94538",
+                      "buyerResellerCountry": "US",
+                      "endCustomerAddress1": "12100 SAMSUNG BLVD",
+                      "endCustomerAddress2": "",
+                      "endCustomerCity": "AUSTIN",
+                      "endCustomerState": "TEXAS",
+                      "endCustomerZip": "78754",
+                      "endCustomerCountry": "US"
+                    },
+                    {
+                      "ciscoDSVLineID": 2,
+                      "distiSoNumber": "5003344211028",
+                      "distiSoLineNumber": "22",
+                      "sourceXmlBookingId": "BKG-ING-US-3",
+                      "sourceProfileId": 352,
+                      "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                      "bookingDate": "2021-10-28",
+                      "distiResellerSoDate": "2021-10-27",
+                      "startDate": null,
+                      "endDate": null,
+                      "duration": null,
+                      "reportedProductUnitPrice": 44.09,
+                      "distiPoNumber": "",
+                      "dropShip": "Y",
+                      "ciscoCreatedFlag": "N",
+                      "buyerResellerAddress1": "48303 FREMONT BLVD",
+                      "buyerResellerAddress2": "",
+                      "buyerResellerCity": "FREMONT",
+                      "buyerResellerState": "CALIFORNIA",
+                      "buyerResellerZip": "94538",
+                      "buyerResellerCountry": "US",
+                      "endCustomerAddress1": "12100 SAMSUNG BLVD",
+                      "endCustomerAddress2": "",
+                      "endCustomerCity": "AUSTIN",
+                      "endCustomerState": "TEXAS",
+                      "endCustomerZip": "78754",
+                      "endCustomerCountry": "US"
+                    }
+                  ]
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/BookingsDetailsResponse"
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error",
+            "examples": {
+              "application/json": {
+                "err1": {
+                  "errorCode": "400",
+                  "errorMessage": "Invalid request message",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "404": {
+            "description": "The server can not find the requested resource.",
+            "examples": {
+              "application/json": {
+                "err2": {
+                  "errorCode": "404",
+                  "errorMessage": "Requested resource was not found",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "405": {
+            "description": "Not Acceptable.",
+            "examples": {
+              "application/json": {
+                "err3": {
+                  "errorCode": "405",
+                  "errorMessage": "Requested method not allowed:",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "406": {
+            "description": "Not Acceptable.",
+            "examples": {
+              "application/json": {
+                "err4": {
+                  "errorCode": "406",
+                  "errorMessage": "Not acceptable:",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "415": {
+            "description": "Unsupported MediaType.",
+            "examples": {
+              "application/json": {
+                "err5": {
+                  "errorCode": "415",
+                  "errorMessage": "Unsupported media type:",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "501": {
+            "description": "The request method is not supported by the server and cannot be handled.",
+            "examples": {
+              "application/json": {
+                "err6": {
+                  "errorCode": "501",
+                  "errorMessage": "Not Implemented",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "examples": {
+              "application/json": {
+                "err7": {
+                  "errorCode": "503",
+                  "errorMessage": "Service Unavailable",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout",
+            "examples": {
+              "application/json": {
+                "err8": {
+                  "errorCode": "504",
+                  "errorMessage": "Gateway Timeout",
+                  "transactionID": "dd960082-abbf-47c2-8c65-f18eeb35848b",
+                  "timeStamp": "2019-09-30T15:27:49.274Z"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/CustomErrorMessage"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "example": {
+                "req1": {
+                  "pageSet": {
+                    "startIndex": 1,
+                    "recordSize": 4
+                  },
+                  "bookingsDetailsRequest": {
+                    "sourceProfileId": 3,
+                    "distiSONumber": "IWUE833",
+                    "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                    "dealID": "",
+                    "ciscoCreated": "N"
+                  }
+                },
+                "req2": {
+                  "pageSet": {
+                    "startIndex": 1,
+                    "recordSize": 2
+                  },
+                  "bookingsDetailsRequest": {
+                    "sourceXmlBookingId": "BKG-ING-US-3",
+                    "distiSONumber": "IWUE833",
+                    "distiSOLineNumber": "22",
+                    "ciscoStandardPartNumber": "CBL-SAS12-240M6=",
+                    "dealID": "",
+                    "ciscoCreated": "N"
+                  }
+                }
+              },
+              "$ref": "#/definitions/BookingsDetailsRequest"
+            },
+            "in": "body",
+            "name": "body",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/ping": {
+      "get": {
+        "description": "Get the current Health Status of the API",
+        "operationId": "GET_ping",
+        "responses": {
+          "200": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "pr1": {
+                  "status": "OK",
+                  "apiName": "distribution-sales-visibility-bookings-sys-api",
+                  "apiVersion": "1.0.0",
+                  "timestamp": "2022-03-01T13:15:25.000Z",
+                  "dependencies": [
+                    "Mongo Database UP And Running ",
+                    "CAE UP and Running"
+                  ]
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/PingResponse"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "examples": {
+              "application/json": {
+                "pr2": {
+                  "status": "DOWN",
+                  "apiName": "distribution-sales-visibility-bookings-sys-api",
+                  "apiVersion": "1.0.0",
+                  "timestamp": "2022-03-01T13:15:25.000Z",
+                  "dependencies": [
+                    "Oracle Database Down ",
+                    "CAE UP and Running"
+                  ]
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/PingResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}
