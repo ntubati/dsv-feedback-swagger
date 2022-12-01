@@ -6,7 +6,7 @@
     "version": "V1.0"
   },
   "host": "anypoint.mulesoft.com",
-  "basePath": "/mocking/api/v1/links/7f71c933-cd95-480e-a4e7-87e0c0808f67/",
+  "basePath": "/dfm/disti/dsv",
   "schemes": [
     "https"
   ],
